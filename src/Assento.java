@@ -5,7 +5,7 @@ public class Assento {
 
     public Assento(String numero, String classe) {
         this.numero = numero;
-        this.classe = formatarClasse(classe);
+        this.classe = Validador.formatarClasse(classe);
         this.disponivel = true;  // Todos os assentos começam disponíveis
     }
 
@@ -13,15 +13,14 @@ public class Assento {
     public String getNumero() {
         return numero;
     }
-
     public String getClasse() {
         return classe;
     }
-
     public boolean isDisponivel() {
         return disponivel;
     }
 
+    //Método que faz o assento ficar em status disponivel
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
@@ -31,6 +30,7 @@ public class Assento {
         this.disponivel = false;
     }
 
+    //Método que retorna uma string formatada com as informações do assento
     @Override
     public String toString() {
         return "Assento " + numero + " (" + classe + ")";
@@ -50,21 +50,5 @@ public class Assento {
         }
     }
 
-    public static String formatarClasse(String classe) {
-        if (classe == null) {
-            return null; // Retorna nulo se a entrada for nula
-        }
-
-        classe = classe.toLowerCase(); // Converte para letras minúsculas e define classes na formatação correta
-        if (classe.contains("xecutiv")) {
-            return "executiva";
-        } else if (classe.contains("rimeir")) {
-            return "primeira classe";
-        } else if (classe.contains("conomic")) {
-            return "economica";
-        } else {
-            return classe; // Retorna a string original se nenhuma correção for feita
-        }
-    }
 
 }
